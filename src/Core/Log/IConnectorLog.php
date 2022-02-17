@@ -1,10 +1,9 @@
 <?php
 namespace Pieterf\LaravelIngIdealAdvanced\Core\Log;
-
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\AbstractResponse;
+use iDEALConnector\Exceptions\ConnectorException;
+use iDEALConnector\Exceptions\iDEALException;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\AbstractRequest;
-use Pieterf\LaravelIngIdealAdvanced\Core\Exceptions\ConnectorException;
-use Pieterf\LaravelIngIdealAdvanced\Core\Exceptions\iDEALException;
 
 /**
  *  Implement this interface to get access to log messages at transport level.
