@@ -46,7 +46,7 @@ class iDEALConnector
 
         $this->serializer = new XmlSerializer();
         $this->signer = new XmlSecurity();
-        $this->validator = new EntityValidator();
+        $this->validator = new Validation\EntityValidator();
 
         $this->merchant = new Merchant($this->configuration->getMerchantID(), $this->configuration->getSubID(), $this->configuration->getMerchantReturnURL());
     }

@@ -14,11 +14,4 @@ class LaravelIngIdealAdvancedServiceProvider extends PackageServiceProvider
             ->name('laravel-ing-ideal-advanced')
             ->hasConfigFile();
     }
-
-    public function registeringPackage()
-    {
-        App::bind('laravel-ing-ideal-advanced',function() {
-            return new \Pieterf\LaravelIngIdealAdvanced\Facades\LaravelIngIdealAdvanced();
-        });
-    }
 }
