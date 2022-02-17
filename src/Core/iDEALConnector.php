@@ -7,8 +7,11 @@ use DOMDocument;
 use Pieterf\LaravelIngIdealAdvanced\Core\Configuration\IConnectorConfiguration;
 use Pieterf\LaravelIngIdealAdvanced\Core\Configuration\LaravelEnvironmentConfiguration;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\AcquirerStatusRequest;
+use Pieterf\LaravelIngIdealAdvanced\Core\Entities\AcquirerStatusResponse;
+use Pieterf\LaravelIngIdealAdvanced\Core\Entities\AcquirerTransactionResponse;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\DirectoryRequest;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\AcquirerTransactionRequest;
+use Pieterf\LaravelIngIdealAdvanced\Core\Entities\DirectoryResponse;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\Transaction;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\Merchant;
 use Pieterf\LaravelIngIdealAdvanced\Core\Exceptions\iDEALException;
@@ -67,13 +70,13 @@ class iDEALConnector
     /**
      * Get directory listing.
      *
-     * @return Pieterf\LaravelIngIdealAdvanced\Core\Entities\DirectoryResponse
-     * @throws Exceptions\SerializationException
-     * @throws Exceptions\iDEALException
-     * @throws Exceptions\ValidationException
-     * @throws Exceptions\SecurityException
+     * @return DirectoryResponse
+     * @throws SecurityException
+     * @throws SerializationException
+     * @throws ValidationException
+     * @throws iDEALException
      */
-    public function getIssuers()
+    public function getIssuers(): DirectoryResponse
     {
         try{
             $request = new DirectoryRequest($this->merchant);
@@ -104,15 +107,15 @@ class iDEALConnector
      * Start a transaction.
      *
      * @param $issuerID
-     * @param Pieterf\LaravelIngIdealAdvanced\Core\Entities\Transaction $transaction
+     * @param Transaction $transaction
      * @param null $merchantReturnUrl
-     * @return Pieterf\LaravelIngIdealAdvanced\Core\Entities\AcquirerTransactionResponse
-     *@throws Exceptions\iDEALException
-     * @throws Exceptions\ValidationException
-     * @throws Exceptions\SecurityException
-     * @throws Exceptions\SerializationException
+     * @return AcquirerTransactionResponse
+     * @throws SecurityException
+     * @throws SerializationException
+     * @throws ValidationException
+     * @throws iDEALException
      */
-    public function startTransaction($issuerID, Transaction $transaction,  $merchantReturnUrl = null)
+    public function startTransaction($issuerID, Transaction $transaction,  $merchantReturnUrl = null): AcquirerTransactionResponse
     {
         try{
             $merchant = $this->merchant;
@@ -148,13 +151,13 @@ class iDEALConnector
      * Get a transaction status.
      *
      * @param $transactionID
-     * @return Pieterf\LaravelIngIdealAdvanced\Core\Entities\AcquirerStatusResponse
-     *@throws Exceptions\iDEALException
-     * @throws Exceptions\ValidationException
-     * @throws Exceptions\SecurityException
-     * @throws Exceptions\SerializationException
+     * @return AcquirerStatusResponse
+     * @throws SecurityException
+     * @throws SerializationException
+     * @throws ValidationException
+     * @throws iDEALException
      */
-    public function getTransactionStatus($transactionID)
+    public function getTransactionStatus($transactionID): AcquirerStatusResponse
     {
         try{
             $request = new AcquirerStatusRequest($this->merchant, $transactionID);
