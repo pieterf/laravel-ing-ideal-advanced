@@ -4,8 +4,8 @@ namespace Pieterf\LaravelIngIdealAdvanced\Core\Xml;
 use DOMDocument;
 use Exception;
 use Pieterf\LaravelIngIdealAdvanced\Core\Exceptions\SecurityException;
-use XMLSecurityKey;
-use XMLSecurityDSig;
+use Pieterf\LaravelIngIdealAdvanced\Core\Libraries\XMLSecurityDSig;
+use Pieterf\LaravelIngIdealAdvanced\Core\Libraries\XMLSecurityKey;
 
 class XmlSecurity
 {
@@ -37,7 +37,6 @@ class XmlSecurity
         if (!$sig)
             throw new SecurityException("Cannot locate Signature Node");
 
-        //$signature->setCanonicalMethod(XMLSecurityDSig::EXC_C14N); //whitespaces are significant
         $signature->canonicalizeSignedInfo();
 
         try
