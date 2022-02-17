@@ -2,9 +2,6 @@
 
 namespace Pieterf\LaravelIngIdealAdvanced\Core\Libraries;
 
-use DOMDocument;
-use DOMElement;
-use DOMXPath;
 use Exception;
 
 class XMLSecurityDSig
