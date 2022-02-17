@@ -7,22 +7,15 @@ use InvalidArgumentException;
  */
 class Issuer
 {
-    private $id;
-    private $name;
+    private string $id;
+    private string $name;
 
     /**
      * @param string $id
      * @param string $name
      */
-    public function __construct($id, $name)
+    public function __construct(string $id, string $name)
     {
-
-        if(!is_string($id))
-            throw new InvalidArgumentException("Parameter 'id' must be of type string.");
-
-        if(!is_string($name))
-            throw new InvalidArgumentException("Parameter 'name' must be of type string.");
-
         $this->id = $id;
         $this->name = $name;
     }
@@ -30,7 +23,7 @@ class Issuer
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
@@ -38,7 +31,7 @@ class Issuer
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }

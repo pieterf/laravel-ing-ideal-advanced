@@ -1,24 +1,20 @@
 <?php
 namespace Pieterf\LaravelIngIdealAdvanced\Core\Entities;
 
-use InvalidArgumentException;
 /**
  *
  */
 class AcquirerStatusRequest extends AbstractRequest
 {
-    private $merchant;
-    private $transactionID;
+    private Merchant $merchant;
+    private string $transactionID;
 
     /**
      * @param Merchant $merchant
      * @param string $transactionID
      */
-    public function __construct(Merchant $merchant, $transactionID)
+    public function __construct(Merchant $merchant, string $transactionID)
     {
-        if(!is_string($transactionID))
-            throw new InvalidArgumentException("Parameter 'transactionID' must be of type string.");
-
         parent::__construct();
 
         $this->merchant = $merchant;
@@ -28,7 +24,7 @@ class AcquirerStatusRequest extends AbstractRequest
     /**
      * @return Merchant
      */
-    public function getMerchant()
+    public function getMerchant(): Merchant
     {
         return $this->merchant;
     }
@@ -36,7 +32,7 @@ class AcquirerStatusRequest extends AbstractRequest
     /**
      * @return string
      */
-    public function getTransactionID()
+    public function getTransactionID(): string
     {
         return $this->transactionID;
     }

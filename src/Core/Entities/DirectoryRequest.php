@@ -1,14 +1,12 @@
 <?php
 namespace Pieterf\LaravelIngIdealAdvanced\Core\Entities;
 
-require_once("Merchant.php");
-require_once("AbstractRequest.php");
 /**
  * The DirectoryRequest object used for the directory request call.
  */
 class DirectoryRequest extends AbstractRequest
 {
-    private $merchant;
+    private Merchant $merchant;
 
     /**
      * @param Merchant $merchant
@@ -22,7 +20,7 @@ class DirectoryRequest extends AbstractRequest
     /**
      * @return Merchant
      */
-    public function getMerchant()
+    public function getMerchant(): Merchant
     {
         return $this->merchant;
     }

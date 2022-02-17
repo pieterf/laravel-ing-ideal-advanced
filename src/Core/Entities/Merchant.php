@@ -7,23 +7,17 @@ use InvalidArgumentException;
  */
 class Merchant
 {
-    private $merchantID;
-    private $subID;
-    private $merchantReturnURL;
+    private string $merchantID;
+    private int $subID;
+    private string $merchantReturnURL;
 
     /**
      * @param string $merchantID
      * @param int $subID
      * @param string $merchantReturnURL
      */
-    public function __construct($merchantID, $subID, $merchantReturnURL)
+    public function __construct(string $merchantID, int $subID, string $merchantReturnURL)
     {
-        if(!is_string($merchantID))
-            throw new InvalidArgumentException("Parameter 'merchantID' must be of type string.");
-
-        if(!is_int($subID))
-            throw new InvalidArgumentException("Parameter 'subID' must be of type int.");
-
         $this->merchantID = $merchantID;
         $this->merchantReturnURL = $merchantReturnURL;
         $this->subID = $subID;
@@ -32,7 +26,7 @@ class Merchant
     /**
      * @return string
      */
-    public function getMerchantID()
+    public function getMerchantID(): string
     {
         return $this->merchantID;
     }
@@ -40,7 +34,7 @@ class Merchant
     /**
      * @return int
      */
-    public function getSubID()
+    public function getSubID(): int
     {
         return $this->subID;
     }
@@ -48,7 +42,7 @@ class Merchant
     /**
      * @return string
      */
-    public function getMerchantReturnURL()
+    public function getMerchantReturnURL(): string
     {
         return $this->merchantReturnURL;
     }

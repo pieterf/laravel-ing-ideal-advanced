@@ -3,29 +3,21 @@ namespace Pieterf\LaravelIngIdealAdvanced\Core\Entities;
 
 use InvalidArgumentException;
 
-require_once("Issuer.php");
-
 /**
  *  The Country class specific to the directoryResponse.
  */
 class Country
 {
-    private $countryNames;
-    private $issuers;
+    private string $countryNames;
+    private array $issuers;
 
     /**
      * @param string $countryNames
      * @param Issuer[] $issuers
      * @throws InvalidArgumentException
      */
-    public function __construct($countryNames, $issuers)
+    public function __construct(string $countryNames, array $issuers)
     {
-        if(!is_array($issuers))
-            throw new InvalidArgumentException("Parameter 'issuers' must be array.");
-
-        if(!is_string($countryNames))
-            throw new InvalidArgumentException("Parameter 'countryNames' must be of type string.");
-
         $this->countryNames = $countryNames;
         $this->issuers = $issuers;
     }
@@ -33,7 +25,7 @@ class Country
     /**
      * @return string
      */
-    public function getCountryNames()
+    public function getCountryNames(): string
     {
         return $this->countryNames;
     }
@@ -41,7 +33,7 @@ class Country
     /**
      * @return Issuer[]
      */
-    public function getIssuers()
+    public function getIssuers(): array
     {
         return $this->issuers;
     }

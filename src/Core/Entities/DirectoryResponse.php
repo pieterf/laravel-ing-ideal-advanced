@@ -4,16 +4,14 @@ namespace Pieterf\LaravelIngIdealAdvanced\Core\Entities;
 use InvalidArgumentException;
 use DateTime;
 
-require_once("Country.php");
-
 /**
  * The DirectoryResponse object received from the directory request call.
  */
 class DirectoryResponse extends AbstractResponse
 {
-    private $directoryDate;
-    private $acquirerID;
-    private $countries;
+    private DateTime $directoryDate;
+    private string $acquirerID;
+    private array $countries;
 
     /**
      * @param DateTime $date
@@ -22,14 +20,8 @@ class DirectoryResponse extends AbstractResponse
      * @param Country[] $countries
      * @throws InvalidArgumentException
      */
-    public function __construct(DateTime $date, DateTime $directoryDate, $acquirerID, $countries)
+    public function __construct(DateTime $date, DateTime $directoryDate, string $acquirerID, array $countries)
     {
-        if(!is_string($acquirerID))
-            throw new InvalidArgumentException("Parameter 'acquirerID' should be of type string.");
-
-        if(!is_array($countries))
-            throw new InvalidArgumentException("Parameter 'countries' should be an array.");
-
         parent::__construct($date);
 
         $this->directoryDate = $directoryDate;
@@ -40,7 +32,7 @@ class DirectoryResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getAcquirerID()
+    public function getAcquirerID(): string
     {
         return $this->acquirerID;
     }
@@ -48,7 +40,7 @@ class DirectoryResponse extends AbstractResponse
     /**
      * @return Country[]
      */
-    public function getCountries()
+    public function getCountries(): array
     {
         return $this->countries;
     }
@@ -56,7 +48,7 @@ class DirectoryResponse extends AbstractResponse
     /**
      * @return DateTime
      */
-    public function getDirectoryDate()
+    public function getDirectoryDate(): DateTime
     {
         return $this->directoryDate;
     }

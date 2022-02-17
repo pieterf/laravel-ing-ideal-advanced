@@ -9,15 +9,15 @@ use DateTime;
  */
 class AcquirerStatusResponse extends AbstractResponse
 {
-    private $acquirerID;
-    private $transactionID;
-    private $status;
-    private $statusTimestamp;
-    private $consumerName;
-    private $consumerIBAN;
-    private $consumerBIC;
-    private $amount;
-    private $currency;
+    private string $acquirerID;
+    private string $transactionID;
+    private string $status;
+    private DateTime $statusTimestamp;
+    private ?string $consumerName;
+    private ?string $consumerIBAN;
+    private ?string $consumerBIC;
+    private ?float $amount;
+    private ?string $currency;
 
     /**
      * @param string $acquirerID
@@ -31,36 +31,9 @@ class AcquirerStatusResponse extends AbstractResponse
      * @param DateTime $statusTimestamp
      * @param string $transactionID
      */
-    function __construct($acquirerID, $amount, $consumerBIC, $consumerIBAN, $consumerName, DateTime $createdTimestamp, $currency, $status, DateTime $statusTimestamp, $transactionID)
+    function __construct(string $acquirerID, ?float $amount, ?string $consumerBIC, ?string $consumerIBAN, ?string $consumerName, DateTime $createdTimestamp, ?string $currency, string $status, DateTime $statusTimestamp, string $transactionID)
     {
         parent::__construct($createdTimestamp);
-
-        if(!is_string($acquirerID))
-            throw new InvalidArgumentException("Parameter 'acquirerID' must be of type string.");
-
-        if(!is_string($transactionID))
-            throw new InvalidArgumentException("Parameter 'transactionID' must be of type string.");
-
-        if(!is_string($status))
-            throw new InvalidArgumentException("Parameter 'status' must be of type string.");
-
-        if ($status == "Success")
-        {
-            if(!is_float($amount))
-                throw new InvalidArgumentException("Parameter 'amount' must be of type float.");
-
-            if(!is_string($consumerBIC))
-                throw new InvalidArgumentException("Parameter 'consumerBIC' must be of type string.");
-
-            if(!is_string($consumerName))
-                throw new InvalidArgumentException("Parameter 'consumerName' must be of type string.");
-
-            if(!is_string($consumerIBAN))
-                throw new InvalidArgumentException("Parameter 'consumerIBAN' must be of type string.");
-
-            if(!is_string($currency))
-                throw new InvalidArgumentException("Parameter 'currency' must be of type string.");
-        }
 
         $this->acquirerID = $acquirerID;
         $this->amount = $amount;
@@ -76,7 +49,7 @@ class AcquirerStatusResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getAcquirerID()
+    public function getAcquirerID(): string
     {
         return $this->acquirerID;
     }
@@ -84,7 +57,7 @@ class AcquirerStatusResponse extends AbstractResponse
     /**
      * @return float
      */
-    public function getAmount()
+    public function getAmount(): ?float
     {
         return $this->amount;
     }
@@ -92,7 +65,7 @@ class AcquirerStatusResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getConsumerBIC()
+    public function getConsumerBIC(): ?string
     {
         return $this->consumerBIC;
     }
@@ -100,7 +73,7 @@ class AcquirerStatusResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getConsumerIBAN()
+    public function getConsumerIBAN(): ?string
     {
         return $this->consumerIBAN;
     }
@@ -108,7 +81,7 @@ class AcquirerStatusResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getConsumerName()
+    public function getConsumerName(): ?string
     {
         return $this->consumerName;
     }
@@ -116,7 +89,7 @@ class AcquirerStatusResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): ?string
     {
         return $this->currency;
     }
@@ -124,7 +97,7 @@ class AcquirerStatusResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->status;
     }
@@ -132,7 +105,7 @@ class AcquirerStatusResponse extends AbstractResponse
     /**
      * @return DateTime
      */
-    public function getStatusTimestamp()
+    public function getStatusTimestamp(): DateTime
     {
         return $this->statusTimestamp;
     }
@@ -140,7 +113,7 @@ class AcquirerStatusResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getTransactionID()
+    public function getTransactionID(): string
     {
         return $this->transactionID;
     }

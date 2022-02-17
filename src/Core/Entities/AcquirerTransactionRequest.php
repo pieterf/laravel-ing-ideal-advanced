@@ -1,23 +1,20 @@
 <?php
 namespace Pieterf\LaravelIngIdealAdvanced\Core\Entities;
-
-
-require_once("Transaction.php");
 /**
  *
  */
 class AcquirerTransactionRequest extends AbstractRequest
 {
-    private $issuerID;
-    private $merchant;
-    private $transaction;
+    private string $issuerID;
+    private Merchant $merchant;
+    private Transaction $transaction;
 
     /**
      * @param string $issuerID
      * @param Merchant $merchant
      * @param Transaction $transaction
      */
-    public function __construct($issuerID, Merchant $merchant, Transaction $transaction)
+    public function __construct(string $issuerID, Merchant $merchant, Transaction $transaction)
     {
         parent::__construct();
 
@@ -29,7 +26,7 @@ class AcquirerTransactionRequest extends AbstractRequest
     /**
      * @return string
      */
-    public function getIssuerID()
+    public function getIssuerID(): string
     {
         return $this->issuerID;
     }
@@ -37,7 +34,7 @@ class AcquirerTransactionRequest extends AbstractRequest
     /**
      * @return Merchant
      */
-    public function getMerchant()
+    public function getMerchant(): Merchant
     {
         return $this->merchant;
     }
@@ -45,7 +42,7 @@ class AcquirerTransactionRequest extends AbstractRequest
     /**
      * @return Transaction
      */
-    public function getTransaction()
+    public function getTransaction(): Transaction
     {
         return $this->transaction;
     }

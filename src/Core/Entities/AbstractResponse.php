@@ -8,7 +8,7 @@ use DateTime;
  */
 class AbstractResponse
 {
-    private $createDateTimestamp;
+    private DateTime $createDateTimestamp;
 
     /**
      * @param DateTime $createDateTimestamp
@@ -21,7 +21,7 @@ class AbstractResponse
     /**
      * @return DateTime
      */
-    public function getCreateDateTimestamp()
+    public function getCreateDateTimestamp(): DateTime
     {
         return $this->createDateTimestamp;
     }

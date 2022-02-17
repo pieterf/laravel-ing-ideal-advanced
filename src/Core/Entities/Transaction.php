@@ -8,13 +8,13 @@ use InvalidArgumentException;
  */
 class Transaction
 {
-    private $purchaseId;
-    private $amount;
-    private $currency;
-    private $expirationPeriod;
-    private $language;
-    private $description;
-    private $entranceCode;
+    private string $purchaseId;
+    private float $amount;
+    private string $currency;
+    private int $expirationPeriod;
+    private string $language;
+    private string $description;
+    private string $entranceCode;
 
     /**
      * @param float $amount
@@ -26,26 +26,8 @@ class Transaction
      * @param string $language
      * @throws InvalidArgumentException
      */
-    function __construct($amount, $description, $entranceCode, $expirationPeriod, $purchaseID, $currency = 'EUR', $language = 'nl')
+    function __construct(float $amount, string $description, string $entranceCode, int $expirationPeriod, string $purchaseID, string $currency = 'EUR', string $language = 'nl')
     {
-        if(!is_float($amount))
-            throw new InvalidArgumentException("Parameter 'amount' must be of type decimal.");
-
-        if(!is_string($description))
-            throw new InvalidArgumentException("Parameter 'description' must be of type string.");
-
-        if(!is_string($entranceCode))
-            throw new InvalidArgumentException("Parameter 'entranceCode' must be of type string.");
-
-        if(!is_int($expirationPeriod))
-            throw new InvalidArgumentException("Parameter 'expirationPeriod' must be of type int.");
-
-        if(!is_string($language))
-            throw new InvalidArgumentException("Parameter 'language' must be of type string.");
-
-        if(!is_string($purchaseID))
-            throw new InvalidArgumentException("Parameter 'purchaseId' must be of type string.");
-
         $this->amount = $amount;
         $this->currency = $currency;
         $this->description = $description;
@@ -59,7 +41,7 @@ class Transaction
      * Amount
      * @return float
      */
-    public function getAmount()
+    public function getAmount(): float
     {
         return $this->amount;
     }
@@ -68,7 +50,7 @@ class Transaction
      * Currency
      * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->currency;
     }
@@ -76,7 +58,7 @@ class Transaction
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -85,7 +67,7 @@ class Transaction
      * Entrance code
      * @return string
      */
-    public function getEntranceCode()
+    public function getEntranceCode(): string
     {
         return $this->entranceCode;
     }
@@ -94,7 +76,7 @@ class Transaction
      * Expiration period
      * @return int
      */
-    public function getExpirationPeriod()
+    public function getExpirationPeriod(): int
     {
         return $this->expirationPeriod;
     }
@@ -103,7 +85,7 @@ class Transaction
      * Language
      * @return string
      */
-    public function getLanguage()
+    public function getLanguage(): string
     {
         return $this->language;
     }
@@ -112,7 +94,7 @@ class Transaction
      * Purchase number
      * @return string
      */
-    public function getPurchaseId()
+    public function getPurchaseId(): string
     {
         return $this->purchaseId;
     }

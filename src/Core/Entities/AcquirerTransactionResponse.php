@@ -8,12 +8,12 @@ use InvalidArgumentException;
  */
 class AcquirerTransactionResponse extends AbstractResponse
 {
-    private $acquirerID;
-    private $issuerAuthenticationURL;
+    private string $acquirerID;
+    private string $issuerAuthenticationURL;
 
-    private $transactionID;
-    private $transactionTimestamp;
-    private $purchaseID;
+    private string $transactionID;
+    private DateTime $transactionTimestamp;
+    private string $purchaseID;
 
     /**
      * @param string $acquirerID
@@ -24,21 +24,9 @@ class AcquirerTransactionResponse extends AbstractResponse
      * @param DateTime $createdTimestamp
      * @throws InvalidArgumentException
      */
-    function __construct($acquirerID, $issuerAuthenticationURL, $purchaseID, $transactionID, DateTime $transactionTimestamp, DateTime $createdTimestamp)
+    function __construct(string $acquirerID, string $issuerAuthenticationURL, string $purchaseID, string $transactionID, DateTime $transactionTimestamp, DateTime $createdTimestamp)
     {
         parent::__construct($createdTimestamp);
-
-        if(!is_string($acquirerID))
-            throw new InvalidArgumentException("Parameter 'acquirerID' must be of type string.");
-
-        if(!is_string($issuerAuthenticationURL))
-            throw new InvalidArgumentException("Parameter 'issuerAuthenticationURL' must be of type string.");
-
-        if(!is_string($purchaseID))
-            throw new InvalidArgumentException("Parameter 'purchaseID' must be of type string.");
-
-        if(!is_string($transactionID))
-            throw new InvalidArgumentException("Parameter 'transactionID' must be of type string.");
 
         $this->acquirerID = $acquirerID;
         $this->issuerAuthenticationURL = $issuerAuthenticationURL;
@@ -50,7 +38,7 @@ class AcquirerTransactionResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getPurchaseID()
+    public function getPurchaseID(): string
     {
         return $this->purchaseID;
     }
@@ -58,7 +46,7 @@ class AcquirerTransactionResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getTransactionID()
+    public function getTransactionID(): string
     {
         return $this->transactionID;
     }
@@ -66,7 +54,7 @@ class AcquirerTransactionResponse extends AbstractResponse
     /**
      * @return DateTime
      */
-    public function getTransactionTimestamp()
+    public function getTransactionTimestamp(): DateTime
     {
         return $this->transactionTimestamp;
     }
@@ -74,7 +62,7 @@ class AcquirerTransactionResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getAcquirerID()
+    public function getAcquirerID(): string
     {
         return $this->acquirerID;
     }
@@ -82,7 +70,7 @@ class AcquirerTransactionResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getIssuerAuthenticationURL()
+    public function getIssuerAuthenticationURL(): string
     {
         return $this->issuerAuthenticationURL;
     }

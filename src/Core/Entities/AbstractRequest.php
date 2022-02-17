@@ -8,7 +8,7 @@ use DateTime;
  */
 abstract class AbstractRequest
 {
-    private $createDateTimestamp;
+    private DateTime $createDateTimestamp;
 
     /**
      *
@@ -21,7 +21,7 @@ abstract class AbstractRequest
     /**
      * @return DateTime
      */
-    public function getCreateDateTimestamp()
+    public function getCreateDateTimestamp(): DateTime
     {
         return $this->createDateTimestamp;
     }
@@ -29,7 +29,7 @@ abstract class AbstractRequest
     /**
      * @return string
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return "3.3.1";
     }
