@@ -15,6 +15,7 @@ use Pieterf\LaravelIngIdealAdvanced\Core\Exceptions\iDEALException;
 use Pieterf\LaravelIngIdealAdvanced\Core\Exceptions\SecurityException;
 use Pieterf\LaravelIngIdealAdvanced\Core\Exceptions\SerializationException;
 use Pieterf\LaravelIngIdealAdvanced\Core\Exceptions\ValidationException;
+use Pieterf\LaravelIngIdealAdvanced\Core\Http\WebRequest;
 use Pieterf\LaravelIngIdealAdvanced\Core\Log\DefaultLog;
 use Pieterf\LaravelIngIdealAdvanced\Core\Log\EntityValidator;
 use Pieterf\LaravelIngIdealAdvanced\Core\Log\IConnectorLog;
