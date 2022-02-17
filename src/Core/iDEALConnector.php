@@ -3,6 +3,7 @@ namespace Pieterf\LaravelIngIdealAdvanced\Core;
 
 use DOMDocument;
 
+include_once 'Libraries/xmlseclibs.php';
 
 use Pieterf\LaravelIngIdealAdvanced\Core\Configuration\IConnectorConfiguration;
 use Pieterf\LaravelIngIdealAdvanced\Core\Configuration\LaravelEnvironmentConfiguration;
