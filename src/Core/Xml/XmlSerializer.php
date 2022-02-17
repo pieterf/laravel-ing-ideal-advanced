@@ -7,8 +7,6 @@ use DOMElement;
 use DateTime;
 use DateTimeZone;
 
-use iDEALConnector\Exceptions\iDEALException;
-use iDEALConnector\Exceptions\SerializationException;
 
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\AbstractRequest;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\DirectoryRequest;
@@ -22,6 +20,8 @@ use Pieterf\LaravelIngIdealAdvanced\Core\Entities\AcquirerTransactionResponse;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\AcquirerStatusResponse;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\Country;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\Issuer;
+use Pieterf\LaravelIngIdealAdvanced\Core\Exceptions\iDEALException;
+use Pieterf\LaravelIngIdealAdvanced\Core\Exceptions\SerializationException;
 
 class XmlSerializer
 {
@@ -34,7 +34,7 @@ class XmlSerializer
 
         $className = get_class($input);
 
-        if ($className === "iDEALConnector\Entities\DirectoryRequest")
+        if ($className === DirectoryRequest::class)
         {
             $element = $doc->createElement("DirectoryReq");
             $this->serializeAbstractRequest($element, $input);
@@ -43,7 +43,7 @@ class XmlSerializer
             $this->serializeDirectoryRequest($element, $input);
             $doc->appendChild($element);
         }
-        else if ($className === "iDEALConnector\Entities\AcquirerTransactionRequest")
+        else if ($className === AcquirerTransactionRequest::class)
         {
             $element = $doc->createElement("AcquirerTrxReq");
             $this->serializeAbstractRequest($element, $input);
@@ -52,7 +52,7 @@ class XmlSerializer
             $this->serializeAcquirerTransactionRequest($element, $input);
             $doc->appendChild($element);
         }
-        else if ($className === "iDEALConnector\Entities\AcquirerStatusRequest")
+        else if ($className === AcquirerStatusRequest::class)
         {
             $element = $doc->createElement("AcquirerStatusReq");
             $this->serializeAbstractRequest($element, $input);
@@ -256,10 +256,10 @@ class XmlSerializer
                 $id = $this->getFirstValue($issuer, "issuerID","Directory.Country.Issuer.issuerID");
                 $name = $this->getFirstValue($issuer, "issuerName","Directory.Country.Issuer.issuerName");
 
-                array_push($issuers, new \Pieterf\LaravelIngIdealAdvanced\Core\Entities\Issuer($id, $name));
+                $issuers[] = new Issuer($id, $name);
             }
 
-            array_push($countries, new \Pieterf\LaravelIngIdealAdvanced\Core\Entities\Country($names, $issuers));
+            $countries[] = new Country($names, $issuers);
         }
 
         return new DirectoryResponse($createdTimestamp, $timestamp, $acquirerID, $countries);
