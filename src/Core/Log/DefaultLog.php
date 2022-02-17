@@ -1,12 +1,11 @@
 <?php
 namespace Pieterf\LaravelIngIdealAdvanced\Core\Log;
 
-use DateTime;
-use iDEALConnector\Exceptions\ConnectorException;
-use iDEALConnector\Exceptions\iDEALException;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\AbstractResponse;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\AbstractRequest;
 use Illuminate\Support\Facades\Log;
+use Pieterf\LaravelIngIdealAdvanced\Core\Exceptions\ConnectorException;
+use Pieterf\LaravelIngIdealAdvanced\Core\Exceptions\iDEALException;
 
 class DefaultLog implements IConnectorLog
 {

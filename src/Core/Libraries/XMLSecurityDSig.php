@@ -202,7 +202,7 @@ class XMLSecurityDSig
                 throw new Exception("Cannot validate digest: Unsupported Algorith <$digestAlgorithm>");
         }
         if (function_exists('hash')) {
-            return base64_encode(hash($alg, $data, TRUE));
+            return base64_encode(hash($alg, $data->saveXML(), TRUE));
         } elseif (function_exists('mhash')) {
             $alg = "MHASH_" . strtoupper($alg);
             return base64_encode(mhash(constant($alg), $data));
