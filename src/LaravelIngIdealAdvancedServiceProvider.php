@@ -2,9 +2,9 @@
 
 namespace Pieterf\LaravelIngIdealAdvanced;
 
+use Illuminate\Support\Facades\App;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Pieterf\LaravelIngIdealAdvanced\Commands\LaravelIngIdealAdvancedCommand;
 
 class LaravelIngIdealAdvancedServiceProvider extends PackageServiceProvider
 {
@@ -13,5 +13,12 @@ class LaravelIngIdealAdvancedServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-ing-ideal-advanced')
             ->hasConfigFile();
+    }
+
+    public function registeringPackage()
+    {
+        App::bind('laravel-ing-ideal-advanced',function() {
+            return new \Pieterf\LaravelIngIdealAdvanced\Facades\LaravelIngIdealAdvanced();
+        });
     }
 }
