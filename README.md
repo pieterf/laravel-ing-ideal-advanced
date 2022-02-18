@@ -16,6 +16,13 @@ You can publish the config file with:
 php artisan vendor:publish --tag="laravel-ing-ideal-advanced-config"
 ```
 
+## Configuration
+```php
+IDEAL_MERCHANT_ID=XXXXXXXXX
+IDEAL_ACQUIRER_URL="https://idealtest.secure-ing.com/ideal/iDEALv3"
+IDEAL_PRIVATE_KEY_PASSWORD=XXXXXXXXXXXXX
+```
+
 ## Usage
 
 ### Issuers
