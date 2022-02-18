@@ -1,6 +1,6 @@
 {
     "name": "pieterf/laravel-ing-ideal-advanced",
-    "description": "-",
+    "description": "ING iDeal advanced API client wrapper for Laravel",
     "keywords": [
         "pieterf",
         "laravel",

@@ -8,7 +8,7 @@ use Pieterf\LaravelIngIdealAdvanced\Core\Entities\DirectoryResponse;
 use Pieterf\LaravelIngIdealAdvanced\Core\Entities\Transaction;
 use Pieterf\LaravelIngIdealAdvanced\Core\iDEALConnector;
 
-class LaravelIngIdealAdvanced
+class Manager
 {
     /**
      * @throws Core\Exceptions\ValidationException

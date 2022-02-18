@@ -20,8 +20,8 @@ php artisan vendor:publish --tag="laravel-ing-ideal-advanced-config"
 
 ### Issuers
 ```php
-$laravelIngIdealAdvanced = new Pieterf\LaravelIngIdealAdvanced();
-$issuers = $laravelIngIdealAdvanced->getIssuers();
+$issuers = LaravelIngIdealAdvanced::getIssuers();
+
 foreach ($issuers->getCountries() as $country) {
     foreach ($country->getIssuers() as $issuer) {
         $issuer->getName();
@@ -31,8 +31,7 @@ foreach ($issuers->getCountries() as $country) {
 
 ### Start Transaction
 ```php
-$laravelIngIdealAdvanced = new Pieterf\LaravelIngIdealAdvanced();
-$transaction = $laravelIngIdealAdvanced->startTransaction(
+$transaction = LaravelIngIdealAdvanced::startTransaction(
     $issuerId,
     new Transaction(1.22, $description, $entranceCode, 60, $purchaseID),
     route('call-back')
@@ -43,8 +42,7 @@ $transaction->getTransactionID()
 
 ### Get Transaction
 ```php
-$laravelIngIdealAdvanced = new Pieterf\LaravelIngIdealAdvanced();
-$transaction = $laravelIngIdealAdvanced->getTransaction($transactionID);
+$transaction = LaravelIngIdealAdvanced::getTransaction($transactionID);
 
 $transaction->getStatus()
 $transaction->getConsumerIBAN()
